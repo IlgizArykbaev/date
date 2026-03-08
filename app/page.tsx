@@ -80,7 +80,7 @@ export default function Home() {
           transition={{ duration: 1, delay: 0.1 }}
           style={{
             fontFamily: "'Cormorant Garamond', serif",
-            fontSize: "13px",
+            fontSize: "clamp(13px, 1.1vw, 17px)",
             letterSpacing: "0.4em",
             color: "rgba(201, 168, 76, 0.7)",
             textTransform: "uppercase",
@@ -98,7 +98,7 @@ export default function Home() {
           className="gold-text"
           style={{
             fontFamily: "'Playfair Display', serif",
-            fontSize: "clamp(52px, 12vw, 96px)",
+            fontSize: "clamp(52px, 12vw, 150px)",
             fontWeight: 700,
             lineHeight: 1,
             marginBottom: "4px",
@@ -114,7 +114,7 @@ export default function Home() {
           transition={{ duration: 1, delay: 0.5 }}
           style={{
             fontFamily: "'Cormorant Garamond', serif",
-            fontSize: "clamp(16px, 3vw, 22px)",
+            fontSize: "clamp(16px, 3vw, 32px)",
             fontStyle: "italic",
             color: "rgba(245, 240, 232, 0.65)",
             letterSpacing: "0.06em",
@@ -154,12 +154,12 @@ export default function Home() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 3.0 }}
           className="text-center"
-          style={{ maxWidth: "520px" }}
+          style={{ maxWidth: "680px" }}
         >
           <p
             style={{
               fontFamily: "'Cormorant Garamond', serif",
-              fontSize: "clamp(15px, 2.5vw, 19px)",
+              fontSize: "clamp(15px, 2.5vw, 26px)",
               fontStyle: "italic",
               color: "rgba(245, 240, 232, 0.8)",
               lineHeight: 1.8,
@@ -173,7 +173,7 @@ export default function Home() {
           <p
             style={{
               fontFamily: "'Playfair Display', serif",
-              fontSize: "clamp(13px, 2vw, 16px)",
+              fontSize: "clamp(13px, 2vw, 22px)",
               color: "rgba(201, 168, 76, 0.75)",
               letterSpacing: "0.1em",
             }}
