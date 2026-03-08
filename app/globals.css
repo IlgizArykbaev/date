@@ -99,7 +99,7 @@ body {
   margin-top: 4px;
   text-align: center;
   font-family: 'Cormorant Garamond', serif;
-  font-size: 10.5px;
+  font-size: 16.5px;
   font-weight: 500;
   color: rgba(245, 240, 232, 0.75);
   letter-spacing: 0.03em;
@@ -121,7 +121,7 @@ body {
     margin-top: 10px;
   }
   .polaroid-compliment {
-    font-size: 12px;
+    font-size: 15px;
     font-weight: 500;
     margin-top: 5px;
   }
@@ -144,7 +144,7 @@ body {
     margin-top: 12px;
   }
   .polaroid-compliment {
-    font-size: 13px;
+    font-size: 16px;
     font-weight: 500;
     margin-top: 6px;
   }

@@ -11,6 +11,7 @@ interface PolaroidProps {
   floatDuration: number;
   floatDelay: number;
   zIndex?: number;
+  onClick?: () => void;
 }
 
 export default function Polaroid({
@@ -22,6 +23,7 @@ export default function Polaroid({
   floatDuration,
   floatDelay,
   zIndex = 10,
+  onClick,
 }: PolaroidProps) {
   return (
     <motion.div
@@ -33,6 +35,7 @@ export default function Polaroid({
         ease: [0.34, 1.56, 0.64, 1],
       }}
       className="polaroid cursor-pointer w-full"
+      onClick={onClick}
       style={{
         zIndex,
         "--rot": `${rotation}deg`,

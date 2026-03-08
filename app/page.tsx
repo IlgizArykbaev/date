@@ -2,8 +2,10 @@
 
 import { motion } from "framer-motion";
 import dynamic from "next/dynamic";
+import { useState } from "react";
 import Polaroid from "@/components/Polaroid";
 import MusicPlayer from "@/components/MusicPlayer";
+import PhotoModal from "@/components/PhotoModal";
 
 const StarsBackground = dynamic(() => import("@/components/StarsBackground"), {
   ssr: false,
@@ -66,7 +68,15 @@ const POLAROIDS = [
   },
 ];
 
+interface ModalData {
+  src?: string;
+  caption: string;
+  compliment: string;
+}
+
 export default function Home() {
+  const [modal, setModal] = useState<ModalData | null>(null);
+
   return (
     <main
       className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden"
@@ -77,6 +87,14 @@ export default function Home() {
     >
       <StarsBackground />
       <MusicPlayer />
+      {modal && (
+        <PhotoModal
+          src={modal.src}
+          caption={modal.caption}
+          compliment={modal.compliment}
+          onClose={() => setModal(null)}
+        />
+      )}
 
       <div className="relative z-10 flex flex-col items-center w-full px-4 py-16 md:py-20">
         {/* Дата */}
@@ -91,6 +109,7 @@ export default function Home() {
             color: "rgba(201, 168, 76, 0.7)",
             textTransform: "uppercase",
             marginBottom: "12px",
+            marginTop: "52px",
           }}
         >
           8 марта 2026
@@ -136,7 +155,12 @@ export default function Home() {
           style={{ maxWidth: "860px", width: "100%" }}
         >
           {POLAROIDS.map((p, i) => (
-            <Polaroid key={i} {...p} zIndex={10 + i} />
+            <Polaroid
+              key={i}
+              {...p}
+              zIndex={10 + i}
+              onClick={() => setModal({ src: p.src, caption: p.caption, compliment: p.compliment })}
+            />
           ))}
         </div>
 
