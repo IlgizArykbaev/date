@@ -3,48 +3,92 @@
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 
+const VIDEO_ID = "UvL-yYegtfo";
+
+declare global {
+  interface Window {
+    YT: typeof YT;
+    onYouTubeIframeAPIReady: () => void;
+  }
+}
+
 export default function MusicPlayer() {
-  const audioRef = useRef<HTMLAudioElement>(null);
+  const playerRef = useRef<YT.Player | null>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
   const [playing, setPlaying] = useState(false);
-  const [loaded, setLoaded] = useState(false);
+  const [ready, setReady] = useState(false);
 
   useEffect(() => {
-    const audio = audioRef.current;
-    if (!audio) return;
-    audio.volume = 0.35;
-    const handleCanPlay = () => setLoaded(true);
-    audio.addEventListener("canplaythrough", handleCanPlay);
-    return () => audio.removeEventListener("canplaythrough", handleCanPlay);
+    const initPlayer = () => {
+      if (!containerRef.current) return;
+      playerRef.current = new window.YT.Player(containerRef.current, {
+        videoId: VIDEO_ID,
+        playerVars: {
+          autoplay: 0,
+          controls: 0,
+          loop: 1,
+          playlist: VIDEO_ID,
+          modestbranding: 1,
+          rel: 0,
+        },
+        events: {
+          onReady: () => setReady(true),
+          onStateChange: (e: YT.OnStateChangeEvent) => {
+            setPlaying(e.data === window.YT.PlayerState.PLAYING);
+          },
+        },
+      });
+    };
+
+    if (window.YT && window.YT.Player) {
+      initPlayer();
+    } else {
+      window.onYouTubeIframeAPIReady = initPlayer;
+      if (!document.querySelector("#yt-api-script")) {
+        const script = document.createElement("script");
+        script.id = "yt-api-script";
+        script.src = "https://www.youtube.com/iframe_api";
+        document.head.appendChild(script);
+      }
+    }
+
+    return () => {
+      playerRef.current?.destroy();
+    };
   }, []);
 
-  const toggle = async () => {
-    const audio = audioRef.current;
-    if (!audio) return;
+  const toggle = () => {
+    if (!playerRef.current || !ready) return;
     if (playing) {
-      audio.pause();
-      setPlaying(false);
+      playerRef.current.pauseVideo();
     } else {
-      try {
-        await audio.play();
-        setPlaying(true);
-      } catch {
-        setPlaying(false);
-      }
+      playerRef.current.setVolume(40);
+      playerRef.current.playVideo();
     }
   };
 
   return (
     <>
-      <audio
-        ref={audioRef}
-        loop
-        preload="auto"
-        src="https://www.bensound.com/bensound-music/bensound-romantic.mp3"
-      />
+      {/* Скрытый YouTube плеер */}
+      <div
+        style={{
+          position: "fixed",
+          top: "-9999px",
+          left: "-9999px",
+          width: "1px",
+          height: "1px",
+          overflow: "hidden",
+          pointerEvents: "none",
+        }}
+      >
+        <div ref={containerRef} />
+      </div>
+
+      {/* Кнопка */}
       <motion.button
         onClick={toggle}
         title={playing ? "Выключить музыку" : "Включить музыку"}
-        className="fixed top-5 right-5 z-50 flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium transition-all"
+        className="fixed top-5 right-5 z-50 flex items-center gap-2 rounded-full px-4 py-2"
         style={{
           background: "rgba(20, 20, 40, 0.85)",
           border: "1px solid rgba(201, 168, 76, 0.4)",
@@ -53,9 +97,11 @@ export default function MusicPlayer() {
           fontFamily: "'Cormorant Garamond', serif",
           fontSize: "13px",
           letterSpacing: "0.05em",
+          cursor: ready ? "pointer" : "default",
+          opacity: ready ? 1 : 0.5,
         }}
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
+        whileHover={{ scale: ready ? 1.05 : 1 }}
+        whileTap={{ scale: ready ? 0.95 : 1 }}
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 3.5 }}
@@ -63,12 +109,12 @@ export default function MusicPlayer() {
         {playing ? (
           <>
             <MusicWave />
-            <span>♪ играет</span>
+            <span>Каспийский Груз</span>
           </>
         ) : (
           <>
             <span style={{ fontSize: "16px" }}>♫</span>
-            <span>музыка</span>
+            <span>{ready ? "включить музыку" : "загрузка..."}</span>
           </>
         )}
       </motion.button>
