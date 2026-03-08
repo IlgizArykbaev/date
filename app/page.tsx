@@ -132,8 +132,8 @@ export default function Home() {
 
         {/* Поляроиды */}
         <div
-          className="flex flex-wrap justify-center gap-6 mb-14"
-          style={{ maxWidth: "1100px" }}
+          className="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 mb-14 mx-auto"
+          style={{ maxWidth: "860px", width: "100%" }}
         >
           {POLAROIDS.map((p, i) => (
             <Polaroid key={i} {...p} zIndex={10 + i} />

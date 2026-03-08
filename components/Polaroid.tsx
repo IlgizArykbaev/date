@@ -32,7 +32,7 @@ export default function Polaroid({
         delay,
         ease: [0.34, 1.56, 0.64, 1],
       }}
-      className="polaroid cursor-pointer"
+      className="polaroid cursor-pointer w-full"
       style={{
         zIndex,
         "--rot": `${rotation}deg`,
