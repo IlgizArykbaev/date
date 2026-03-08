@@ -11,6 +11,7 @@ const StarsBackground = dynamic(() => import("@/components/StarsBackground"), {
 
 const POLAROIDS = [
   {
+    src: "/photo_2025-02-28_22-29-59.jpg",
     caption: "наш первый день",
     rotation: -6,
     delay: 0.6,
@@ -18,6 +19,7 @@ const POLAROIDS = [
     floatDelay: 0,
   },
   {
+    src: "/photo_2025-10-01_20-50-45.jpg",
     caption: "твоя улыбка",
     rotation: 4,
     delay: 1.0,
@@ -25,6 +27,7 @@ const POLAROIDS = [
     floatDelay: 0.5,
   },
   {
+    src: "/photo_2025-11-23_22-52-12.jpg",
     caption: "вместе",
     rotation: -3,
     delay: 1.4,
@@ -32,6 +35,7 @@ const POLAROIDS = [
     floatDelay: 1.0,
   },
   {
+    src: "/photo_2026-01-19_13-45-26.jpg",
     caption: "незабываемый вечер",
     rotation: 7,
     delay: 1.8,
@@ -39,14 +43,16 @@ const POLAROIDS = [
     floatDelay: 0.3,
   },
   {
-    caption: "счастье",
+    src: "/photo_2026-02-14_20-40-01.jpg",
+    caption: "14 февраля ♥",
     rotation: -5,
     delay: 2.2,
     floatDuration: 4.8,
     floatDelay: 0.8,
   },
   {
-    caption: "моё всё",
+    src: "/photo_2026-03-08_02-50-14.jpg",
+    caption: "8 марта 2026",
     rotation: 3,
     delay: 2.6,
     floatDuration: 4.0,
