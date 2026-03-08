@@ -88,7 +88,7 @@ export default function MusicPlayer() {
       <motion.button
         onClick={toggle}
         title={playing ? "Выключить музыку" : "Включить музыку"}
-        className="fixed top-5 right-5 z-50 flex items-center gap-2 rounded-full px-4 py-2"
+        className="fixed bottom-6 right-6 z-50 flex items-center gap-2 rounded-full px-4 py-2"
         style={{
           background: "rgba(20, 20, 40, 0.85)",
           border: "1px solid rgba(201, 168, 76, 0.4)",
@@ -102,7 +102,7 @@ export default function MusicPlayer() {
         }}
         whileHover={{ scale: ready ? 1.05 : 1 }}
         whileTap={{ scale: ready ? 0.95 : 1 }}
-        initial={{ opacity: 0, y: -20 }}
+        initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 3.5 }}
       >

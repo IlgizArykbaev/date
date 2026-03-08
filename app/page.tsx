@@ -78,7 +78,7 @@ export default function Home() {
       <StarsBackground />
       <MusicPlayer />
 
-      <div className="relative z-10 flex flex-col items-center w-full px-4">
+      <div className="relative z-10 flex flex-col items-center w-full px-4 py-16 md:py-20">
         {/* Дата */}
         <motion.div
           initial={{ opacity: 0, y: -30 }}
@@ -90,7 +90,7 @@ export default function Home() {
             letterSpacing: "0.4em",
             color: "rgba(201, 168, 76, 0.7)",
             textTransform: "uppercase",
-            marginBottom: "8px",
+            marginBottom: "12px",
           }}
         >
           8 марта 2026
@@ -107,7 +107,7 @@ export default function Home() {
             fontSize: "clamp(52px, 12vw, 150px)",
             fontWeight: 700,
             lineHeight: 1,
-            marginBottom: "4px",
+            marginBottom: "12px",
           }}
         >
           Kamilla
@@ -124,7 +124,7 @@ export default function Home() {
             fontStyle: "italic",
             color: "rgba(245, 240, 232, 0.65)",
             letterSpacing: "0.06em",
-            marginBottom: "48px",
+            marginBottom: "56px",
           }}
         >
           с международным женским днём
@@ -132,8 +132,8 @@ export default function Home() {
 
         {/* Поляроиды */}
         <div
-          className="flex flex-wrap justify-center gap-5 mb-12"
-          style={{ maxWidth: "800px" }}
+          className="flex flex-wrap justify-center gap-6 mb-14"
+          style={{ maxWidth: "860px" }}
         >
           {POLAROIDS.map((p, i) => (
             <Polaroid key={i} {...p} zIndex={10 + i} />
