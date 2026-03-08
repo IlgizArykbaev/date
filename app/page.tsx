@@ -13,7 +13,7 @@ const POLAROIDS = [
   {
     src: "/photo_2025-02-28_22-29-59.jpg",
     caption: "28.02.25 ✦",
-    compliment: "ты была такой красивой",
+    compliment: "рядом с тобой - дома",
     rotation: -6,
     delay: 0.6,
     floatDuration: 4.2,
@@ -22,7 +22,7 @@ const POLAROIDS = [
   {
     src: "/photo_2025-10-01_20-50-45.jpg",
     caption: "01.10.25 ✦",
-    compliment: "твоя улыбка — моя слабость",
+    compliment: "твои глаз - эта самое прекрасное что я видел",
     rotation: 4,
     delay: 1.0,
     floatDuration: 3.8,
@@ -31,7 +31,7 @@ const POLAROIDS = [
   {
     src: "/photo_2025-11-23_22-52-12.jpg",
     caption: "23.11.25 ✦",
-    compliment: "рядом с тобой — дома",
+    compliment: "самая милая и красивая в мире!!!",
     rotation: -3,
     delay: 1.4,
     floatDuration: 4.5,
@@ -40,7 +40,7 @@ const POLAROIDS = [
   {
     src: "/photo_2026-01-19_13-45-26.jpg",
     caption: "19.01.26 ✦",
-    compliment: "ты светишься изнутри",
+    compliment: "у тебя самая красивая улыбка в мире!!!",
     rotation: 7,
     delay: 1.8,
     floatDuration: 3.6,
@@ -49,7 +49,7 @@ const POLAROIDS = [
   {
     src: "/photo_2026-02-14_20-40-01.jpg",
     caption: "14.02.26 ♥",
-    compliment: "лучший день — с тобой",
+    compliment: "все цветы мира - это твои!",
     rotation: -5,
     delay: 2.2,
     floatDuration: 4.8,
@@ -58,7 +58,7 @@ const POLAROIDS = [
   {
     src: "/photo_2026-03-08_02-50-14.jpg",
     caption: "08.03.26 ✿",
-    compliment: "самая красивая — сегодня и всегда",
+    compliment: "самая красивая - сегодня, сейчас, и всегда",
     rotation: 3,
     delay: 2.6,
     floatDuration: 4.0,
@@ -173,7 +173,7 @@ export default function Home() {
               marginBottom: "24px",
             }}
           >
-            Ты — моё любимое воспоминание, которое я хочу создавать каждый день.
+            Ты - моё любимое воспоминание, которое я хочу создавать каждый день.
             Спасибо за твою теплоту, свет и бесконечную красоту.
           </p>
           <p
@@ -184,7 +184,7 @@ export default function Home() {
               letterSpacing: "0.1em",
             }}
           >
-            ✦ &nbsp; С любовью &nbsp; ✦
+            ✦ &nbsp; С любовью, твой любимый &nbsp; ✦
           </p>
         </motion.div>
 
