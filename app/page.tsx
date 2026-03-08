@@ -104,7 +104,7 @@ export default function Home() {
           className="gold-text"
           style={{
             fontFamily: "'Playfair Display', serif",
-            fontSize: "clamp(52px, 12vw, 150px)",
+            fontSize: "clamp(52px, 12vw, 180px)",
             fontWeight: 700,
             lineHeight: 1,
             marginBottom: "12px",
@@ -120,7 +120,7 @@ export default function Home() {
           transition={{ duration: 1, delay: 0.5 }}
           style={{
             fontFamily: "'Cormorant Garamond', serif",
-            fontSize: "clamp(16px, 3vw, 32px)",
+            fontSize: "clamp(16px, 3vw, 42px)",
             fontStyle: "italic",
             color: "rgba(245, 240, 232, 0.65)",
             letterSpacing: "0.06em",
@@ -133,7 +133,7 @@ export default function Home() {
         {/* Поляроиды */}
         <div
           className="flex flex-wrap justify-center gap-6 mb-14"
-          style={{ maxWidth: "860px" }}
+          style={{ maxWidth: "1100px" }}
         >
           {POLAROIDS.map((p, i) => (
             <Polaroid key={i} {...p} zIndex={10 + i} />
@@ -160,12 +160,12 @@ export default function Home() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 3.0 }}
           className="text-center"
-          style={{ maxWidth: "680px" }}
+          style={{ maxWidth: "800px" }}
         >
           <p
             style={{
               fontFamily: "'Cormorant Garamond', serif",
-              fontSize: "clamp(15px, 2.5vw, 26px)",
+              fontSize: "clamp(15px, 2.5vw, 32px)",
               fontStyle: "italic",
               color: "rgba(245, 240, 232, 0.8)",
               lineHeight: 1.8,
@@ -179,7 +179,7 @@ export default function Home() {
           <p
             style={{
               fontFamily: "'Playfair Display', serif",
-              fontSize: "clamp(13px, 2vw, 22px)",
+              fontSize: "clamp(13px, 2vw, 28px)",
               color: "rgba(201, 168, 76, 0.75)",
               letterSpacing: "0.1em",
             }}

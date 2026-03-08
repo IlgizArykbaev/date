@@ -71,3 +71,77 @@ body {
   background-clip: text;
   animation: shimmer 3s linear infinite;
 }
+
+/* Polaroid — мобиле */
+.polaroid-card {
+  padding: 10px 10px 14px 10px;
+  width: 160px;
+}
+.polaroid-photo {
+  height: 140px;
+}
+.polaroid-emoji {
+  font-size: 36px;
+  opacity: 0.6;
+}
+.polaroid-caption {
+  margin-top: 10px;
+  text-align: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 11px;
+  color: rgba(201, 168, 76, 0.85);
+  letter-spacing: 0.08em;
+  font-style: italic;
+  line-height: 1.3;
+}
+.polaroid-compliment {
+  margin-top: 5px;
+  text-align: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 10px;
+  color: rgba(245, 240, 232, 0.55);
+  letter-spacing: 0.04em;
+  font-style: italic;
+  line-height: 1.4;
+}
+
+/* Polaroid — планшет */
+@media (min-width: 768px) {
+  .polaroid-card {
+    padding: 12px 12px 18px 12px;
+    width: 210px;
+  }
+  .polaroid-photo {
+    height: 185px;
+  }
+  .polaroid-caption {
+    font-size: 13px;
+    margin-top: 12px;
+  }
+  .polaroid-compliment {
+    font-size: 11px;
+    margin-top: 6px;
+  }
+}
+
+/* Polaroid — десктоп */
+@media (min-width: 1024px) {
+  .polaroid-card {
+    padding: 14px 14px 22px 14px;
+    width: 260px;
+  }
+  .polaroid-photo {
+    height: 230px;
+  }
+  .polaroid-emoji {
+    font-size: 52px;
+  }
+  .polaroid-caption {
+    font-size: 15px;
+    margin-top: 14px;
+  }
+  .polaroid-compliment {
+    font-size: 13px;
+    margin-top: 7px;
+  }
+}

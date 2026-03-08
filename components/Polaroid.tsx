@@ -41,29 +41,22 @@ export default function Polaroid({
       } as React.CSSProperties}
       whileHover={{ scale: 1.08, rotate: 0, zIndex: 50 }}
     >
+      {/* карточка — 160px на мобиле, 220px на md, 260px на lg */}
       <div
-        className="rounded-sm shadow-2xl"
+        className="rounded-sm shadow-2xl polaroid-card"
         style={{
           background: "linear-gradient(145deg, #1e1e30, #141428)",
           border: "1px solid rgba(201, 168, 76, 0.25)",
-          padding: "10px 10px 14px 10px",
-          width: "160px",
         }}
       >
-        <div
-          className="w-full overflow-hidden rounded-sm"
-          style={{ height: "140px", position: "relative" }}
-        >
+        {/* фото */}
+        <div className="w-full overflow-hidden rounded-sm polaroid-photo" style={{ position: "relative" }}>
           {src ? (
             // eslint-disable-next-line @next/next/no-img-element
             <img
               src={src}
               alt={caption}
-              style={{
-                width: "100%",
-                height: "100%",
-                objectFit: "cover",
-              }}
+              style={{ width: "100%", height: "100%", objectFit: "cover" }}
             />
           ) : (
             <div
@@ -77,48 +70,25 @@ export default function Polaroid({
                 justifyContent: "center",
               }}
             >
-              <span style={{ fontSize: "36px", opacity: 0.6 }}>🌸</span>
+              <span className="polaroid-emoji">🌸</span>
             </div>
           )}
           <div
             style={{
               position: "absolute",
               inset: 0,
-              background:
-                "linear-gradient(to bottom, transparent 60%, rgba(0,0,0,0.3))",
+              background: "linear-gradient(to bottom, transparent 60%, rgba(0,0,0,0.3))",
             }}
           />
         </div>
 
         {/* Дата */}
-        <div
-          style={{
-            marginTop: "10px",
-            textAlign: "center",
-            fontFamily: "'Cormorant Garamond', serif",
-            fontSize: "11px",
-            color: "rgba(201, 168, 76, 0.85)",
-            letterSpacing: "0.08em",
-            fontStyle: "italic",
-            lineHeight: 1.3,
-          }}
-        >
+        <div className="polaroid-caption">
           {caption}
         </div>
 
         {/* Комплимент */}
-        <div
-          style={{
-            marginTop: "5px",
-            textAlign: "center",
-            fontFamily: "'Cormorant Garamond', serif",
-            fontSize: "10px",
-            color: "rgba(245, 240, 232, 0.55)",
-            letterSpacing: "0.04em",
-            fontStyle: "italic",
-            lineHeight: 1.4,
-          }}
-        >
+        <div className="polaroid-compliment">
           {compliment}
         </div>
       </div>
