@@ -3,88 +3,45 @@
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 
-const VIDEO_ID = "UvL-yYegtfo";
-
-declare global {
-  interface Window {
-    YT: typeof YT;
-    onYouTubeIframeAPIReady: () => void;
-  }
-}
-
 export default function MusicPlayer() {
-  const playerRef = useRef<YT.Player | null>(null);
-  const containerRef = useRef<HTMLDivElement>(null);
+  const audioRef = useRef<HTMLAudioElement>(null);
   const [playing, setPlaying] = useState(false);
-  const [ready, setReady] = useState(false);
+  const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
-    const initPlayer = () => {
-      if (!containerRef.current) return;
-      playerRef.current = new window.YT.Player(containerRef.current, {
-        videoId: VIDEO_ID,
-        playerVars: {
-          autoplay: 0,
-          controls: 0,
-          loop: 1,
-          playlist: VIDEO_ID,
-          modestbranding: 1,
-          rel: 0,
-        },
-        events: {
-          onReady: () => setReady(true),
-          onStateChange: (e: YT.OnStateChangeEvent) => {
-            setPlaying(e.data === window.YT.PlayerState.PLAYING);
-          },
-        },
-      });
-    };
-
-    if (window.YT && window.YT.Player) {
-      initPlayer();
-    } else {
-      window.onYouTubeIframeAPIReady = initPlayer;
-      if (!document.querySelector("#yt-api-script")) {
-        const script = document.createElement("script");
-        script.id = "yt-api-script";
-        script.src = "https://www.youtube.com/iframe_api";
-        document.head.appendChild(script);
-      }
-    }
-
+    const audio = audioRef.current;
+    if (!audio) return;
+    audio.volume = 0.4;
+    const onCanPlay = () => setLoaded(true);
+    const onEnded = () => setPlaying(false);
+    audio.addEventListener("canplaythrough", onCanPlay);
+    audio.addEventListener("ended", onEnded);
     return () => {
-      playerRef.current?.destroy();
+      audio.removeEventListener("canplaythrough", onCanPlay);
+      audio.removeEventListener("ended", onEnded);
     };
   }, []);
 
-  const toggle = () => {
-    if (!playerRef.current || !ready) return;
+  const toggle = async () => {
+    const audio = audioRef.current;
+    if (!audio) return;
     if (playing) {
-      playerRef.current.pauseVideo();
+      audio.pause();
+      setPlaying(false);
     } else {
-      playerRef.current.setVolume(40);
-      playerRef.current.playVideo();
+      try {
+        await audio.play();
+        setPlaying(true);
+      } catch {
+        setPlaying(false);
+      }
     }
   };
 
   return (
     <>
-      {/* Скрытый YouTube плеер */}
-      <div
-        style={{
-          position: "fixed",
-          top: "-9999px",
-          left: "-9999px",
-          width: "1px",
-          height: "1px",
-          overflow: "hidden",
-          pointerEvents: "none",
-        }}
-      >
-        <div ref={containerRef} />
-      </div>
+      <audio ref={audioRef} loop preload="auto" src="/Kaspijjskijj_gruz_-_Lyubov_HD_1080_49752177.mp3" />
 
-      {/* Кнопка */}
       <motion.button
         onClick={toggle}
         title={playing ? "Выключить музыку" : "Включить музыку"}
@@ -97,11 +54,10 @@ export default function MusicPlayer() {
           fontFamily: "'Cormorant Garamond', serif",
           fontSize: "13px",
           letterSpacing: "0.05em",
-          cursor: ready ? "pointer" : "default",
-          opacity: ready ? 1 : 0.5,
+          cursor: "pointer",
         }}
-        whileHover={{ scale: ready ? 1.05 : 1 }}
-        whileTap={{ scale: ready ? 0.95 : 1 }}
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 3.5 }}
@@ -114,7 +70,7 @@ export default function MusicPlayer() {
         ) : (
           <>
             <span style={{ fontSize: "16px" }}>♫</span>
-            <span>{ready ? "включить музыку" : "загрузка..."}</span>
+            <span>включить музыку</span>
           </>
         )}
       </motion.button>
@@ -128,18 +84,9 @@ function MusicWave() {
       {[1, 2, 3, 2, 1].map((h, i) => (
         <motion.div
           key={i}
-          style={{
-            width: "3px",
-            background: "#c9a84c",
-            borderRadius: "2px",
-          }}
+          style={{ width: "3px", background: "#c9a84c", borderRadius: "2px" }}
           animate={{ height: [`${h * 3}px`, `${h * 9}px`, `${h * 3}px`] }}
-          transition={{
-            duration: 0.6,
-            repeat: Infinity,
-            delay: i * 0.1,
-            ease: "easeInOut",
-          }}
+          transition={{ duration: 0.6, repeat: Infinity, delay: i * 0.1, ease: "easeInOut" }}
         />
       ))}
     </div>
