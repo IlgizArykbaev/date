@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 interface PolaroidProps {
   src?: string;
   caption: string;
+  compliment: string;
   rotation: number;
   delay: number;
   floatDuration: number;
@@ -15,6 +16,7 @@ interface PolaroidProps {
 export default function Polaroid({
   src,
   caption,
+  compliment,
   rotation,
   delay,
   floatDuration,
@@ -44,7 +46,7 @@ export default function Polaroid({
         style={{
           background: "linear-gradient(145deg, #1e1e30, #141428)",
           border: "1px solid rgba(201, 168, 76, 0.25)",
-          padding: "10px 10px 40px 10px",
+          padding: "10px 10px 14px 10px",
           width: "160px",
         }}
       >
@@ -87,6 +89,8 @@ export default function Polaroid({
             }}
           />
         </div>
+
+        {/* Дата */}
         <div
           style={{
             marginTop: "10px",
@@ -100,6 +104,22 @@ export default function Polaroid({
           }}
         >
           {caption}
+        </div>
+
+        {/* Комплимент */}
+        <div
+          style={{
+            marginTop: "5px",
+            textAlign: "center",
+            fontFamily: "'Cormorant Garamond', serif",
+            fontSize: "10px",
+            color: "rgba(245, 240, 232, 0.55)",
+            letterSpacing: "0.04em",
+            fontStyle: "italic",
+            lineHeight: 1.4,
+          }}
+        >
+          {compliment}
         </div>
       </div>
     </motion.div>
